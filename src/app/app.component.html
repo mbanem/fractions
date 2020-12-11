@@ -1,0 +1,168 @@
+<div id="student-container">
+  <div class="student-name-black"
+       #studentName
+       (click)="toggleStudentName(studentName)">Marko Milutinovi&#263;</div>
+  <div class="subject-name">FRACTIONS</div>
+</div>
+
+<div id="messagebox"
+     class="message-box">
+</div>
+<table>
+  <tr>
+    <th class="main-title unit">
+      <span class="tt white">
+        W
+        <span id="tooltipW"
+              class="tt tt-textW">
+        </span>
+      </span>
+    </th>
+    <th class="main-title">A Unit Devided in Fractions
+      <button type="button"
+              id="renderbutton"
+              (click)="render()"
+              class='button'>render</button>
+    </th>
+    <th class="column-a">Fractions</th>
+    <th class="column-x">Expand</th>
+    <th class="column-b">Equivalent Fractions
+      <span class="tt">
+        <input type="checkbox"
+               id="chkAutomatic"
+               class="chk-automatic">
+        <span class="tt tt-text2">
+          Set automatic behavior when entering fractions
+        </span>
+      </span>
+    </th>
+  </tr>
+
+  <!------------- NG FOR -------------------------->
+  <tr *ngFor="let i of [0,1,2,3]"
+      id="{{'row'+i}}">
+    <td id="{{'unit'+ i}}"
+        class="whole-units">
+    </td>
+    <td>
+      <div id="{{'whole'+ i}}"></div>
+    </td>
+    <td>
+      <!-- cannot implement two-way binding [(ngModel)]="{{'fractions.f'+ ix}}"
+             so turn to event-binding (change) and then set fraction.f#
+            where # is ix in this loop, i.e. end of element id, 2 for frac2 -->
+      <span class="tt">
+        <input class="fraction-value"
+               id="{{'frac'+ i}}"
+               (change)="clearResultRow()"
+               (blur)="fractionInputOnChange($event)"
+               (keyup.enter)="fractionInputOnChange($event)"
+               type="text"
+               onfocus="this.select(); this.selAll=1;" />
+        <span id="{{'tooltip'+i}}"
+              class="tt {{'tt-text'+ttix[i]}}">
+        </span>
+      </span>
+    </td>
+    <td id="{{'tdExpand'+ i}}">
+      <span *ngIf="i===1 || i===2">
+        <button id="{{'expand'+i}}"
+                [ngClass]="{'ex-button-visible': canExpand(), 'ex-button-hidden': !canExpand()}"
+                (click)="expandFractions()">expand</button>
+      </span>
+    </td>
+    <td>
+      <div class="{{'equivalents'+ i}}"></div>
+    </td>
+  </tr>
+
+  <!-- ------------------- /NG FOR ---------------- -->
+  <tr></tr>
+
+  <!-- ---------------- 5th ROW ----------------------- -->
+  <tr>
+    <td id="unit4"
+        class="whole-units"></td>
+    <td>
+      <div id="whole4"></div>
+    </td>
+    <td>
+      <div>
+        <span class='tt'>
+          <input [ngClass]="{'fraction-value':true, 'wrong-result': incorrectSum()}"
+                 id="frac4"
+                 (blur)="renderResult($event)"
+                 (keyup.enter)="renderResult($event)"
+                 type="text"
+                 [(ngModel)]="fractions.f4">
+          <span id="tooltip4"
+                class="tt tt-text1">
+          </span>
+        </span>
+      </div>
+    </td>
+    <td></td>
+    <td>
+      <div class="equivalents4"></div>
+    </td>
+  </tr>
+  <!-- ---------------- /5th ROW ----------------------- -->
+</table>
+
+<!-- ---------------- LCD and EXPLNATOIN ----------------------- -->
+<table>
+  <tr>
+    <th>
+      <div class='lcd-label'>
+        Enter a number and press the Enter key to factorize it in primes
+      </div>
+      <div>
+        <input id='number1'
+               type="text"
+               class="primes"
+               (change)="factorize($event, 'lcd1')">
+        <span class="tt">
+          <input id="lcd1"
+                 type="text"
+                 class="lcd"
+                 readonly>
+          <span id="tooltipLCD1"
+                class="tt tt-textLCD">
+          </span>
+        </span>
+      </div>
+      <div>
+        <input id='number2'
+               type="text"
+               class="primes"
+               (change)="factorize($event, 'lcd2')">
+        <span class="tt">
+          <input id="lcd2"
+                 type="text"
+                 class="lcd"
+                 readonly>
+          <span id="tooltipLCD2"
+                class="tt tt-textLCD">
+          </span>
+        </span>
+      </div>
+      <div id='divlcd'>
+        <input type="text"
+               class="primes"
+               value="LCD"
+               readonly>
+        <input id="lcd3"
+               type="text"
+               class="lcd"
+               readonly>
+      </div>
+    </th>
+    <th>
+      <div id="explanation"
+           class="explanation">
+
+      </div>
+    </th>
+  </tr>
+</table>
+<!-- ---------------- /LCD and EXPLNATOIN ----------------------- -->

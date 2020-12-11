@@ -1,0 +1,376 @@
+@font-face {
+  font-family: "Ananda Black Personal Use";
+  src: url("/assets/Ananda Black Personal Use.ttf") format("truetype");
+}
+
+/* Student and Subject Titles*/
+#student-container {
+  width: 600px;
+  height: 35px;
+}
+
+.student-name-black,
+.student-name-red,
+.subject-name {
+  height: 26px;
+  font-family: "Ananda Black Personal Use";
+  font-size: 24pt;
+  color: black;
+  letter-spacing: 4px;
+  text-align: left;
+  line-height: 24px;
+  float: left;
+  position: relative;
+  margin-left: 8%;
+  text-shadow: 2px 7px 8px gray;
+  cursor: pointer;
+}
+
+.student-name-red {
+  color: red;
+  letter-spacing: 6.8px;
+  text-shadow: 2px 7px 8px pink;
+}
+
+.subject-name {
+  font-family: Verdana;
+  color: black;
+  letter-spacing: 1px;
+  font-size: 18px;
+  text-shadow: none;
+  cursor: default;
+}
+
+/* TABLE */
+table,
+th,
+td {
+  border: 1px solid gray;
+  /* border-collapse: collapse; */
+}
+
+th,
+td {
+  padding: 1px;
+  height: 39px;
+}
+
+table {
+  border-spacing: 5px;
+  width: 1350px;
+}
+
+/* for improper fractins a whole part */
+.unit {
+  width: 20px !important;
+
+}
+
+/* font: font-style font-variant font-weight font-size/line-height font-family;
+font: italic small-caps normal 13px/150% Arial,Helvetica,sans-serif;
+*/
+.whole-units {
+  text-align: center;
+  font: 16pt Arial, Helvetica;
+}
+
+.white {
+  color: white !important;
+}
+
+td[id^=tdExpand] {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.fraction-value {
+  /* necessary to shrink column width */
+  width: 75px;
+  height: 32px;
+  border: 0 solid;
+  text-align: center;
+}
+
+[class^=equivalents] {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.fraction-part {
+  text-align: center;
+}
+
+[id^=whole] {
+  font-size: 10pt;
+}
+
+.main-title,
+.column-a,
+.column-b,
+.column-x {
+  height: 26px;
+  color: white;
+  background-color: navy;
+  font-size: 14pt;
+  text-align: center;
+  line-height: 24px;
+  border-right: 1px solid white;
+}
+
+.main-title {
+  width: 600px;
+}
+
+.column-a {
+  /* width set by input box */
+  font-size: 12pt;
+}
+
+.column-b {
+  width: 540px;
+  font-size: 12pt;
+}
+
+.column-x {
+  width: 60px;
+}
+
+/* classic fractions */
+.fract,
+.fract-bold-red {
+  display: inline-flex;
+  flex-direction: column;
+  padding: -4px 2px -4px 2px;
+  align-items: center;
+  /* border: 1px solid gray; */
+}
+
+.fract-bold-red {
+  font-weight: bolder;
+  color: red !important;
+}
+
+.numerator {
+  border-bottom: 2px solid grey;
+}
+
+.operator {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  line-height: 5px;
+}
+
+.message-box {
+  height: 30px;
+  color: red;
+  font-size: 14pt;
+  font-weight: bold;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.button {
+  float: right;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.lcd-title {
+  margin: 15px 0 10px 20px;
+  font-size: 12pt;
+}
+
+#lcd {
+  font-size: 14px;
+}
+
+#lcd tr,
+#lcd td {
+  padding-left: 10px;
+  text-align: left;
+  font-size: 14pt;
+}
+
+.td-1 {
+  text-align: center;
+  width: 70px;
+}
+
+input[type=number] {
+  display: inline-block;
+  width: 35px;
+  text-align: center;
+}
+
+/* parent element should include this tt (tooltip) class */
+.tt {
+  position: relative;
+  display: inline-block;
+  color: #259e15;
+  z-index: 1;
+}
+
+/* tooltip span includes both clsses .tt .tt-text and tooltip text
+   which become visible when muse hovers ove the parent element */
+.tt .tt-text,
+.tt .tt-text0,
+.tt .tt-text1,
+.tt .tt-text2,
+// .tt .tt-text3,
+// .tt .tt-text4,
+.tt .tt-textW,
+/* to explain meaning of the W 1st header column */
+.tt .tt-textLCD {
+  font-size: 13pt;
+  font-style: italic;
+  visibility: hidden;
+  width: 160px;
+  background-color: yellow; // rgb(102, 88, 163);
+  // color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2px 8px;
+  position: absolute;
+  // z-index: 1;
+  bottom: 115%;
+  left: 120%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tt .tt-text1,
+.tt .tt-text2 {
+  width: 60px;
+  padding: 0;
+  left: 160%;
+  bottom: 70%;
+  // font-size: 14pt;
+  /* font-weight: bold; */
+  position: absolute;
+  color: black;
+  background-color: yellow;
+  // z-index: 1;
+}
+
+.tt .tt-text2 {
+  width: 15rem;
+  height: 2.7rem;
+  line-height: 1.2rem;
+  padding-top: 6px;
+}
+
+.tt .textLCD {
+  width: 160px;
+  padding: 5px 5px;
+  bottom: 120%;
+  font-size: 15pt;
+  /* color: white !important; */
+  background-color: yellow;
+  position: absolute;
+  // z-index: 1;
+}
+
+.tt .tt-textLCD {
+  left: 60%;
+  font-size: 13pt;
+  width: 200px;
+  /* color: white; */
+  background-color: yellow;
+}
+
+.tt .tt-textW {
+  left: 200%;
+  width: 180px;
+  font-size: 13pt;
+  line-height: 15pt;
+  color: white;
+  background-color: navy;
+}
+
+/* tooltip span become visible when mouse hovers over the parent element */
+.tt:hover .tt-text0,
+.tt:hover .tt-text1,
+.tt:hover .tt-text2,
+// .tt:hover .tt-text3,
+// .tt:hover .tt-text4,
+.tt:hover .tt-textW,
+.tt:hover .tt-textLCD {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+.hide-tooltip {
+  display: none;
+}
+
+.lcd-label {
+  color: navy;
+  font-size: 14pt;
+  font-style: italic;
+  width: 220px;
+  margin: 10px 0;
+}
+
+input.primes,
+input.lcd {
+  text-align: center;
+  width: 50px;
+  font-size: 14pt;
+  border: 1px solid gray;
+  display: inline-block;
+}
+
+input.lcd {
+  width: 150px;
+}
+
+.ex-button-visible {
+  display: inline-block;
+}
+
+.ex-button-hidden {
+  display: none;
+}
+
+#divlcd input {
+  background-color: rgb(226, 239, 245);
+}
+
+#frac1,
+#frac2,
+#frac4 {
+  background-color: cornsilk;
+  border: 1px solid black;
+}
+
+#frac0,
+#frac3 {
+  background-color: aliceblue;
+  border: 1px solid navy;
+}
+
+.wrong-result {
+  color: white;
+  background-color: red !important;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+#explanation {
+  font-family: 'Arial Narrow', Georgia, Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: 400;
+  padding: 10px 15px;
+  color: rgba(36, 34, 34, 0.938);
+}
+
+.test {
+  color: #e6e657;
+  color: #c6c6f8;
+  color: #f8bc8b;
+  color: #fcfc73;
+  color: #aaaae4;
+}
